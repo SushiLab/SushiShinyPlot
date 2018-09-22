@@ -46,5 +46,6 @@ data(mite.env)
 newdat<-cbind(mite[,order(colSums(mite),decreasing = T)[1:5]],mite.env)
 
 # Make a Scatterplot Shiny App
+library(SushiShinyPlot)
 shinyScatter(newdat)
 ```
