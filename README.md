@@ -5,11 +5,11 @@ The package SushiShinyPlot provides pre-built Shiny Apps for the most common plo
 ## Content
 The current version contains the following functions:
 
-+ **ShinyScatter()** Shiny App for a Scatterplot.  
-+ **ShinyViolin()** Shiny App for a Violinplot.  
-+ **ShinyHistogram()** Shiny App for a Histogram.  
-+ **ShinyDensity()** Shiny App for a Densityplot.  
-+ **ShinyBar()** Shiny App for a Barplot.  
++ **shinyScatter()** Shiny App for a Scatterplot.  
++ **shinyViolin()** Shiny App for a Violinplot.  
++ **shinyHistogram()** Shiny App for a Histogram.  
++ **shinyDensity()** Shiny App for a Densityplot.  
++ **shinyBar()** Shiny App for a Barplot.  
 
 
 ## Installation of the package
