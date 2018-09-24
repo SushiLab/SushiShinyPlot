@@ -343,7 +343,11 @@ shinyBar<-function(dat){
           p <- ggplot(dataset(), aes_string(x = input$x, y = input$y, fill = input$color)) + 
           geom_bar(stat="identity")}
       
-      if (input$pos=="Side-by-side") {
+      if (input$pos=="Side-by-side" & input$color=="None") {
+        p <- ggplot(dataset(), aes_string(x = input$x, y = input$y)) + 
+          geom_bar(stat="identity",position="dodge")
+      }
+      else if (input$pos=="Side-by-side" & input$color!="None"){
         p <- ggplot(dataset(), aes_string(x = input$x, y = input$y, fill = input$color)) + 
           geom_bar(stat="identity",position="dodge")
       }
