@@ -21,7 +21,7 @@ install.packages("plotly")
 install.packages("shiny")
 ```
 
-* Install SushiShinyPlot' current development version from Github:
+* Install **SushiShinyPlot** current development version from Github:
 
 ```r
 devtools::install_github("SushiLab/SushiShinyPlot")
