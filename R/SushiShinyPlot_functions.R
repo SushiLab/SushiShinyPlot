@@ -107,7 +107,7 @@ shinyViolin<-function(dat){
       selectInput('x', 'X variable', choices = nms.factor, selected = nms.factor[1]),
       selectInput('y', 'Y variable', choices = nms.numeric, selected = nms.numeric[2]),
       selectInput('color', 'Color by variable', choices = c("None",nms), selected = "None"),
-      
+      selectInput('flip', 'Flip axis?', choices = c("No","Yes"), selected = "No"),
       selectInput('facet_row', 'Facet Row', c(None = '.', nms.factor), selected = "None"),
       selectInput('facet_col', 'Facet Column', c(None = '.', nms.factor)),
       sliderInput('plotHeight', 'Height of plot (in pixels)', 
@@ -130,13 +130,19 @@ shinyViolin<-function(dat){
       
       # build graph with ggplot syntax
       if (input$color=="None") {p <- ggplot(dataset(), aes_string(x = input$x, y = input$y)) + 
-        geom_violin(scale = "width",draw_quantiles = 0.5)} else
+        geom_violin(scale = "width",draw_quantiles = 0.5) +
+        theme(axis.text.x = element_text(angle=90))} else
         {p <- ggplot(dataset(), aes_string(x = input$x, y = input$y, fill = input$color)) + 
-          geom_violin(scale = "width",draw_quantiles = 0.5,position = "dodge")}
+          geom_violin(scale = "width",draw_quantiles = 0.5,position = "dodge") +
+          theme(axis.text.x = element_text(angle=90))}
       
       # if at least one facet column/row is specified, add it
       facets <- paste(input$facet_row, '~', input$facet_col)
       if (facets != '. ~ .') p <- p + facet_grid(facets)
+
+      if (input$flip=="Yes") {
+        p <- p + coord_flip()
+      }
       
       ggplotly(p,height = input$plotHeight, autosize=TRUE)
       
@@ -337,19 +343,23 @@ shinyBar<-function(dat){
       # build graph with ggplot syntax
       if (input$color=="None") {
         p <- ggplot(dataset(), aes_string(x = input$x, y = input$y)) + 
-          geom_bar(stat = "identity")}
+          geom_bar(stat = "identity") +
+          theme(axis.text.x = element_text(angle=90))}
       else
         {
           p <- ggplot(dataset(), aes_string(x = input$x, y = input$y, fill = input$color)) + 
-          geom_bar(stat="identity")}
+          geom_bar(stat="identity") +
+          theme(axis.text.x = element_text(angle=90))}
       
       if (input$pos=="Side-by-side" & input$color=="None") {
         p <- ggplot(dataset(), aes_string(x = input$x, y = input$y)) + 
-          geom_bar(stat="identity",position="dodge")
+          geom_bar(stat="identity",position="dodge") +
+          theme(axis.text.x = element_text(angle=90))
       }
       else if (input$pos=="Side-by-side" & input$color!="None"){
         p <- ggplot(dataset(), aes_string(x = input$x, y = input$y, fill = input$color)) + 
-          geom_bar(stat="identity",position="dodge")
+          geom_bar(stat="identity",position="dodge") +
+          theme(axis.text.x = element_text(angle=90))
       }
       
       if (input$flip=="Yes") {
