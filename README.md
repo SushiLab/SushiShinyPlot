@@ -41,6 +41,7 @@ citation("SushiShinyPlot")
 
 ```r
 # Load some data
+install.packages("vegan")
 library(vegan)
 data(mite)
 data(mite.env)
