@@ -19,6 +19,7 @@ The current version contains the following functions:
 ```r
 install.packages("plotly")  
 install.packages("shiny")
+install.packages("devtools")
 ```
 
 * Install **SushiShinyPlot** current development version from Github:
